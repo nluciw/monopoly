@@ -1,11 +1,12 @@
 import random
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
 
 """ This script runs the actual simulations for the game. Most of the
     mechanics can be found in the class 'Piece'.
 
-    Define board size and number of turns in script at the end.  
+    Pass number of turns from command line.  
 """
 
 class Piece:
@@ -131,7 +132,7 @@ if __name__ == '__main__':
 
     # game parameters    
     board_size = 40
-    turns = 5000000
+    turns = int(sys.argv[1])
 
     # create decks
     chances = np.arange(16)
