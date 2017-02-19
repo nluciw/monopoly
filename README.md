@@ -1,0 +1,2 @@
+# monopoly
+Monopoly analysis project
