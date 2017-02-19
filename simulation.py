@@ -77,15 +77,20 @@ class Piece:
 # card draw
 def draw(piece, type):
 
+    # share decks among pieces
     global chances
 
+    # reshuffle decks after depletion
     if chances.shape[0] < 1:
         chances = np.arange(16)
 
     if type == 'chance':
+
+        # draw and remove card from deck
         card = random.choice(chances)
         chances = np.delete(chances, np.argwhere(chances==card))
 
+        # implement card effects
         if card == 0:
             piece.pos = 0
         elif card == 1:
@@ -140,10 +145,14 @@ if __name__ == '__main__':
     # perform turns
     for i in range(turns):
         for piece in pieces:
+
+            # move piece
             piece.move()
+            # draw card
             if (piece.pos == 7) | (piece.pos == 22) |\
                     (piece.pos == 36):
                 draw(piece,'chance')
+
             piece.locations.append(piece.pos)
 
     # plot location distribution
